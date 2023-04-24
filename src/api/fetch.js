@@ -1,4 +1,4 @@
-const BASE_URL = 'https://strangers-things.herokuapp.com/api/2309-FTB-PT-WEB-PT'
+const BASE_URL = 'https://strangers-things.herokuapp.com/api/2301-FTB-PT-WEB-PT'
 
 export const fetchPosts = async () => {
     try {
@@ -12,3 +12,81 @@ export const fetchPosts = async () => {
     }
 }
 
+export const registerUser = async (username, password) => {
+    try {
+      const response = await fetch(
+        `${BASE_URL}/users/register`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user: {
+            username,
+            password
+          }
+        })
+      });
+      const result = await response.json();
+      console.log(result)
+      return result
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  export const loginUser = async (username, password) => {
+    try {
+      const response = await fetch(
+        `${BASE_URL}/users/login`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user: {
+            username,
+            password
+          }
+        })
+      });
+      const result = await response.json();
+      console.log(result)
+      return result
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  export const makePost = async (title, description, price, willDeliver, token) => {
+        let userCanDeliver;
+        if(willDeliver){
+            userCanDeliver = false;
+        } else {
+            userCanDeliver = true;
+        }
+
+    try {
+        console.log('hello', token)
+        const response = await fetch(`${BASE_URL}/posts`, {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            post: {
+              title: title,
+              description: description,
+              price: price,
+              willDeliver: userCanDeliver
+            }
+          })
+        });
+        const result = await response.json();
+        console.log(result);
+        return result
+      } catch (err) {
+        console.error(err);
+      }
+  }

@@ -1,6 +1,15 @@
 
 body {
     margin-top: 0px;
+    height: 100vh;
+}
+
+#app {
+    height: 100vh;
+}
+
+#body-div {
+    height: 100vh;
 }
 
 #site-header {
@@ -11,18 +20,37 @@ body {
     display: flex;
     flex-direction: row;
     align-content: center;
+    justify-content: space-between;
     padding-left: 15px;
+    color: white;
 }
 
 #site-title {
     font-family: 'Righteous', cursive;
     color: white;
+    padding-left: 20px;
+}
+
+#mainsite-body {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    height: 80vh;
 }
 
 .post {
     border: solid 1px black;
     margin: 10px;
-    
+    width: 50vw;
+}
+
+.posts-div {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4px;
 }
 
 .post-title {
@@ -42,4 +70,94 @@ body {
 
 .post-price {
     padding-left: 5px;
+}
+
+.nav-bar {
+    padding-right: 100px;
+    padding-top: 35px;
+    font-family: 'Assistant', sans-serif;
+    color: white;
+    text-decoration: none;
+}
+
+.register {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding-top: 250px;
+}
+
+#username {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+#password {
+    display: flex;
+    justify-content: center;
+}
+
+#register-button {
+    width: 80px;
+    text-align: center;
+}
+
+#register-button-div {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+#login-button {
+    width: 80px;
+    text-align: center;
+}
+
+#login-button-div {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+#nav-bar-links {
+    padding-top: 37px;
+}
+
+#logged-in-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 12px;
+}
+
+#new-post-div {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px black;
+    width: 30vw;
+    padding: 12px;
+    padding-top: 0px;
+    padding-bottom: 20px;
+    margin-top: 15px;
+}
+
+.new-post-label {
+    padding-top: 15px;
+}
+
+#new-post-desc {
+    height: 50px;
+}
+
+#new-post-listing-button{
+    margin-top: 15px;
+}
+
+#logout-button {
+    background-color:  #0F1111;
+    font-family: 'Assistant', sans-serif;
+    border: none;
+    padding-top: 2px;
+    font-size: medium;
 }

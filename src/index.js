@@ -1,18 +1,42 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import ReactDom from 'react-dom'
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Link, useHistory } from 'react-router-dom'
 import Posts from './components/posts'
+import Register from './components/register'
+import LogIn from './components/login'
+import SetHeader from './components/headers'
+
 
 const Main = () => {
+    const [token, setToken] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    let history = useHistory();
+
+    useEffect(() => {
+        if(!token){
+            setToken(localStorage.getItem('token'))
+        }
+        
+    }, [])    
     return (
-        <div>
-            <div id='site-header'>
-            <h1 id='site-title'>stranger's things</h1>
-        </div>
+        <BrowserRouter>
+        <div id='body-div'>
+        <SetHeader isLoggedIn={isLoggedIn} setToken={setToken} token={token}/> 
             <div id = 'mainsite-body'>
-                <Posts />
+
+                <Route path = '/users/register'>
+                    <Register token = {token} setToken = {setToken} />
+                </Route>
+                <Route path = '/users/login'>
+                    <LogIn token = {token} setToken = {setToken} setIsLoggedIn = {setIsLoggedIn}/>
+                </Route>
+                <Route path = '/posts'>
+                    <Posts token = {token}/>
+                </Route>
             </div>
+           
         </div>
+        </BrowserRouter>
     )
 }
 
