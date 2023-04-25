@@ -17,11 +17,15 @@ const Main = () => {
             setToken(localStorage.getItem('token'))
         }
         
-    }, [])    
+    }, [token])    
+
+    useEffect(()=>{
+        console.log('isLoggedIn: ', isLoggedIn);
+    }, [])
     return (
         <BrowserRouter>
         <div id='body-div'>
-        <SetHeader isLoggedIn={isLoggedIn} setToken={setToken} token={token}/> 
+        <SetHeader setToken={setToken} token={token} isLoggedIn = {isLoggedIn} setIsLoggedIn={setIsLoggedIn}/> 
             <div id = 'mainsite-body'>
 
                 <Route path = '/users/register'>

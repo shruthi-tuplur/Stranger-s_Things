@@ -8,6 +8,7 @@ const Register = ({token, setToken}) => {
 
 const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
+const [isRegistered, setIsRegistered] = useState(false);
 const params = useParams(); 
 
 
@@ -16,16 +17,15 @@ const handleSubmit = async () => {
     setUsername(username);
     setPassword(password);
     const registerNewUser = await registerUser(username, password);
-    console.log(registerNewUser);
     setToken(registerNewUser.data.token);
-
+    setIsRegistered(true);
     
-    window.location.href = '/users/login';
 }
 
 return (
     <div>
         <form className='register' onSubmit={handleSubmit}>
+            <h2 id='create-acc'>Create an account</h2>
             <div id='username' >
                 <label htmlFor='username'>Username: </label>
                 <input required type='text' name='username' onChange ={(event) => {
@@ -42,6 +42,9 @@ return (
             <button id='register-button'>Register</button>
             </div>
         </form>
+        {isRegistered && (
+            <h2 id='has-registered'>Thank you for registering! Login to start buying and selling.</h2>
+        )}
     </div>
 )
 }

@@ -28,7 +28,7 @@ export const registerUser = async (username, password) => {
         })
       });
       const result = await response.json();
-      console.log(result)
+      
       return result
     } catch (err) {
       console.error(err);
@@ -51,14 +51,14 @@ export const registerUser = async (username, password) => {
         })
       });
       const result = await response.json();
-      console.log(result)
+
       return result
     } catch (err) {
       console.error(err);
     }
   }
 
-  export const makePost = async (title, description, price, willDeliver, token) => {
+  export const makePost = async (title, description, price, willDeliver, location, token) => {
         let userCanDeliver;
         if(willDeliver){
             userCanDeliver = false;
@@ -67,7 +67,7 @@ export const registerUser = async (username, password) => {
         }
 
     try {
-        console.log('hello', token)
+        
         const response = await fetch(`${BASE_URL}/posts`, {
           method: "POST",
           headers: {
@@ -79,12 +79,13 @@ export const registerUser = async (username, password) => {
               title: title,
               description: description,
               price: price,
-              willDeliver: userCanDeliver
+              willDeliver: userCanDeliver,
+              location: location
             }
           })
         });
         const result = await response.json();
-        console.log(result);
+        
         return result
       } catch (err) {
         console.error(err);

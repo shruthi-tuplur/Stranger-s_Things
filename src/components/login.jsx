@@ -17,11 +17,10 @@ const handleSubmit = async (event) => {
     setUsername(username);
     setPassword(password);
     const loginCurrentUser = await loginUser(username, password);
-    console.log(loginCurrentUser);
     setToken(loginCurrentUser.data.token);
-    setIsLoggedIn(true);
-    console.log(token)
+    
     localStorage.setItem('token', loginCurrentUser.data.token);
+    setIsLoggedIn(true);
     //window.location.href = '/posts';
     history.push('/posts');
     

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { fetchPosts, makePost } from '../api/fetch';
 import { useHistory } from 'react-router-dom';
+import { async } from 'q';
 
 const Posts = (props) => {
 
@@ -10,7 +11,7 @@ const Posts = (props) => {
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [willDeliver, setWillDeliver] = useState('');
-    console.log(props.token);
+    const [location, setLocation] = useState('');
 
     const history= useHistory();
 
@@ -21,15 +22,24 @@ const Posts = (props) => {
 
     useEffect(() => {
         getPostData();
-        console.log(posts);
+        
     }, [] )
 
-    const handleSubmit = () => {
+    useEffect(()=>{
+        console.log(title);
+        console.log(description);
+    })
+
+    const handleSubmit = async() => {
         event.preventDefault()
-        console.log(props.token);
-        let newPostInfo = makePost(title, description, price, willDeliver, props.token);
-        console.log(newPostInfo);
-        history.push('/posts');
+        let newPostInfo = await makePost(title, description, price, willDeliver, location, props.token);
+        await getPostData();
+        setTitle('');
+        setDescription('');
+        setPrice('');
+        setLocation('');
+        setWillDeliver(false);
+        
     }
 
     return (
@@ -51,13 +61,17 @@ const Posts = (props) => {
                     <div id='new-post-div'>
                         <h3>Create a listing</h3>
                         <label  className='new-post-label' htmlFor='new-post-title'>Title: </label>
-                        <input type='text' name = 'new-post-title' onChange={(event) => {setTitle(event.target.value)}}></input>
+                        <input type='text' name = 'new-post-title' value = {title} onChange={(event) => {setTitle(event.target.value)}}></input>
+
                         <label  className='new-post-label' htmlFor='new-post-description'>Description: </label>
-                        <input type='text' name='new-post-desc' id='new-post-desc' onChange={(event) => {setDescription(event.target.value)}}></input>
+                        <input type='text' name='new-post-desc' id='new-post-desc'  value = {description} onChange={(event) => {setDescription(event.target.value)}}></input>
+
                         <label  className='new-post-label' htmlFor='new-post-price'>Price: </label>
-                        <input type='text' name='new-post-price' onChange={(event) => {setPrice(event.target.value)}}></input>
+                        <input type='text' name='new-post-price'  value = {price} onChange={(event) => {setPrice(event.target.value)}}></input>
+
                         <label  className='new-post-label' htmlFor='new-post-location'>Location: </label>
-                        <input type='text' name='new-post-location'></input>
+                        <input type='text' name='new-post-location'  value = {location} onChange={(event) => {setLocation(event.target.value)}} ></input>
+
                         <div className='new-post-label' >
                             <label htmlFor='will-deliver'>Will you deliver this item?</label>
                             <input type='checkbox' name='will-deliver'onChange={(event) => {

@@ -84,7 +84,7 @@ body {
     display: flex;
     flex-direction: column;
     align-content: center;
-    padding-top: 250px;
+    padding-top: 200px;
 }
 
 #username {
@@ -160,4 +160,12 @@ body {
     border: none;
     padding-top: 2px;
     font-size: medium;
+}
+
+#create-acc {
+    text-align: center;
+}
+
+#has-registered {
+    text-align: center;
 }
