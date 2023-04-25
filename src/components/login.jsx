@@ -4,9 +4,9 @@ import { loginUser } from '../api/fetch';
 import { Route, useParams, useHistory } from 'react-router-dom';
 
 
-const LogIn = ({setToken, token, setIsLoggedIn}) => {
+const LogIn = ({setToken, token, setIsLoggedIn, username, setUsername}) => {
 
-const [username, setUsername] = useState('');
+
 const [password, setPassword] = useState('');
 
 const history= useHistory();
@@ -14,13 +14,20 @@ const history= useHistory();
 
 const handleSubmit = async (event) => {
     event.preventDefault();
+
     setUsername(username);
+    localStorage.setItem('username', username);
+
     setPassword(password);
+
     const loginCurrentUser = await loginUser(username, password);
+
     setToken(loginCurrentUser.data.token);
     
     localStorage.setItem('token', loginCurrentUser.data.token);
+
     setIsLoggedIn(true);
+    localStorage.setItem('isLoggedIn', true);
     //window.location.href = '/posts';
     history.push('/posts');
     
@@ -29,7 +36,9 @@ const handleSubmit = async (event) => {
 
 return (
     <div>
+        
         <form className='register' onSubmit={handleSubmit}>
+            <h1 id='sign-in'>Sign In</h1>
             <div id='username' >
                 <label htmlFor='username'>Username: </label>
                 <input required type='text' name='username' onChange ={(event) => {

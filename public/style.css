@@ -13,7 +13,7 @@ body {
 }
 
 #site-header {
-    background-color: #0F1111;
+    background-color: #0a173f;
     margin-top: 0px;
     padding-top: 0px;
     width: 100vw;
@@ -39,9 +39,12 @@ body {
 }
 
 .post {
-    border: solid 1px black;
+    border: solid 1px #0a173f;
     margin: 10px;
     width: 50vw;
+    font-family: 'Assistant', sans-serif;
+    border-radius: 5px;
+    color: #0a173f;
 }
 
 .posts-div {
@@ -54,17 +57,21 @@ body {
 }
 
 .post-title {
-    border-bottom: solid 1px black;
     padding-left: 5px;
+    background-color: #0a173f;
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 0px;
 }
 
 .post-author-name {
-    border-bottom: solid 1px black;
+    border-bottom: solid 1px #0a173f;
     padding-left: 5px;
 }
 
 .post-description {
-    border-bottom: solid 1px black;
+    border-bottom: solid 1px #0a173f;
     padding-left: 5px;
 }
 
@@ -134,12 +141,13 @@ body {
 #new-post-div {
     display: flex;
     flex-direction: column;
-    border: solid 1px black;
+    border: solid 1px #0a173f;
     width: 30vw;
     padding: 12px;
     padding-top: 0px;
     padding-bottom: 20px;
     margin-top: 15px;
+    border-radius: 5px;
 }
 
 .new-post-label {
@@ -155,7 +163,7 @@ body {
 }
 
 #logout-button {
-    background-color:  #0F1111;
+    background-color:  #0a173f;
     font-family: 'Assistant', sans-serif;
     border: none;
     padding-top: 2px;
@@ -168,4 +176,76 @@ body {
 
 #has-registered {
     text-align: center;
+}
+
+
+.unauth-login {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+    align-items: center;
+    text-decoration: none;
+    font-family: 'Assistant', sans-serif;
+    margin-top: 20px;
+}
+
+#sign-in {
+    text-align: center;
+}
+
+#post-delete-button{
+    margin-bottom: 10px;
+    margin-left: 10px;
+    background-color: #0a173f;
+    color: white;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.post-form {
+    font-family: 'Assistant', sans-serif;
+    
+}
+
+button {
+    font-family: 'Assistant', sans-serif;
+    background-color: #0a173f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-left: 2px;
+}
+
+#profile-button {
+    background-color:  #0a173f;
+    font-family: 'Assistant', sans-serif;
+    border: none;
+    padding-top: 2px;
+    font-size: medium;
+}
+
+#posts-button {
+    background-color:  #0a173f;
+    font-family: 'Assistant', sans-serif;
+    border: none;
+    padding-top: 2px;
+    font-size: medium;
+}
+
+#message-form {
+    border-top: #0a173f solid 1px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    
+}
+
+#message-on-post{
+    border-top: #0a173f solid 1px;
+    font-family: 'Assistant', sans-serif;
+    color: #0a173f;
+    padding-left: 10px;
 }

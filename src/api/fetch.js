@@ -91,3 +91,43 @@ export const registerUser = async (username, password) => {
         console.error(err);
       }
   }
+
+  export const deletePost  = async (postID, token) => {
+    try {
+        const response = await fetch(`${BASE_URL}/posts/${postID}`, {
+          method: "DELETE",
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        const result = await response.json();
+        return result
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+  export const sendMessage = async (postID, token, message) => {
+    try {
+        const response = await fetch(`${BASE_URL}/posts/${postID}/messages`, {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            message: {
+              content: message
+            }
+          })
+        });
+        const result = await response.json();
+        console.log(result);
+        return result
+      } catch (err) {
+        console.error(err);
+      }
+  }  
+  
+  

@@ -5,11 +5,13 @@ import Posts from './components/posts'
 import Register from './components/register'
 import LogIn from './components/login'
 import SetHeader from './components/headers'
-
+import UnauthPosts from './components/unauth-posts'
+import Profile from './components/profile'
 
 const Main = () => {
     const [token, setToken] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [username, setUsername] = useState('');
     let history = useHistory();
 
     useEffect(() => {
@@ -19,9 +21,20 @@ const Main = () => {
         
     }, [token])    
 
-    useEffect(()=>{
-        console.log('isLoggedIn: ', isLoggedIn);
-    }, [])
+    useEffect(() => {
+        if(!isLoggedIn){
+            setIsLoggedIn(localStorage.getItem('isLoggedIn'))
+        }
+        
+    }, [isLoggedIn])   
+    
+    useEffect(() => {
+        if(!username){
+            setUsername(localStorage.getItem('username'));
+        }
+        
+    }, [username])  
+
     return (
         <BrowserRouter>
         <div id='body-div'>
@@ -32,14 +45,21 @@ const Main = () => {
                     <Register token = {token} setToken = {setToken} />
                 </Route>
                 <Route path = '/users/login'>
-                    <LogIn token = {token} setToken = {setToken} setIsLoggedIn = {setIsLoggedIn}/>
+                    <LogIn token = {token} setToken = {setToken} setIsLoggedIn = {setIsLoggedIn} username = {username} setUsername = {setUsername}/>
                 </Route>
                 <Route path = '/posts'>
-                    <Posts token = {token}/>
+                    <Posts token = {token} username = {username} isLoggedIn={isLoggedIn}/>
+                </Route>
+                <Route exact path='/'>
+                    <UnauthPosts/>   
+                </Route>  
+                <Route path='/users/myprofile'>
+                    <Profile username = {username}/>
                 </Route>
             </div>
-           
+          
         </div>
+          
         </BrowserRouter>
     )
 }

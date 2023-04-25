@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import { fetchPosts, makePost } from '../api/fetch';
+import { fetchPosts, makePost, deletePost } from '../api/fetch';
 import { useHistory } from 'react-router-dom';
+import Message from './message-form';
 import { async } from 'q';
 
-const Posts = (props) => {
+const Posts = ({username, isLoggedIn, token}) => {
 
     
     const [posts, setPosts] = useState([]);
@@ -12,11 +13,13 @@ const Posts = (props) => {
     const [price, setPrice] = useState('');
     const [willDeliver, setWillDeliver] = useState('');
     const [location, setLocation] = useState('');
+    const [viewMessage, setViewMessage] = useState('');
+    const [messageFrom, setMessageFrom] = useState('');
 
     const history= useHistory();
 
     const getPostData = async () => {
-        let postData = await fetchPosts();
+        let postData = await fetchPosts();  
         setPosts(postData.data.posts)
     }
 
@@ -24,15 +27,10 @@ const Posts = (props) => {
         getPostData();
         
     }, [] )
-
-    useEffect(()=>{
-        console.log(title);
-        console.log(description);
-    })
-
+   
     const handleSubmit = async() => {
         event.preventDefault()
-        let newPostInfo = await makePost(title, description, price, willDeliver, location, props.token);
+        let newPostInfo = await makePost(title, description, price, willDeliver, location, token);
         await getPostData();
         setTitle('');
         setDescription('');
@@ -42,6 +40,11 @@ const Posts = (props) => {
         
     }
 
+    const deleteMyPost = async(postID, token) => {
+        await deletePost(postID, token);
+        await getPostData();
+    }
+    
     return (
         <div id='logged-in-main'>
             <div className='posts-div'>
@@ -52,6 +55,9 @@ const Posts = (props) => {
                             <p className='post-author-name'>{post.author.username} - Location: {post.location}</p>
                             <p className='post-description'>{post.description}</p>
                             <p className='post-price'>{post.price}</p>
+                            {username == post.author.username && <button id='post-delete-button' onClick={()=>{deleteMyPost(post._id, token)}}>Delete post</button>}
+                            {username !==post.author.username && <Message postID={post._id} token = {token} viewMessage={viewMessage} username = {username} setViewMessage={setViewMessage} setMessageFrom={setMessageFrom}/>}
+
                         </div> )
                     })}
 
