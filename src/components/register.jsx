@@ -25,15 +25,15 @@ const handleSubmit = async () => {
 return (
     <div>
         <form className='register' onSubmit={handleSubmit}>
-            <h2 id='create-acc'>Create an account</h2>
+            <h2 id='create-acc'  className='login-label' >Create an account</h2>
             <div id='username' >
-                <label htmlFor='username'>Username: </label>
+                <label htmlFor='username'  className='login-label' >Username: </label>
                 <input required type='text' name='username' onChange ={(event) => {
                     setUsername(event.target.value);
                     }}></input>
             </div>
             <div id='password'>
-                <label htmlFor='password'>Password: </label>
+                <label htmlFor='password'  className='login-label' >Password: </label>
                 <input required type='password' name='password' onChange ={(event) => {
                     setPassword(event.target.value);
                     }}></input>

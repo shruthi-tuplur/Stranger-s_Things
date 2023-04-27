@@ -1,6 +1,6 @@
 
 body {
-    margin-top: 0px;
+    margin: 0px;
     height: 100vh;
 }
 
@@ -21,12 +21,13 @@ body {
     flex-direction: row;
     align-content: center;
     justify-content: space-between;
-    padding-left: 15px;
+    padding-left: 30px;
     color: white;
+    margin-left: 0px;
 }
 
 #site-title {
-    font-family: 'Righteous', cursive;
+    font-family: 'Sigmar', cursive;
     color: white;
     padding-left: 20px;
 }
@@ -248,4 +249,45 @@ button {
     font-family: 'Assistant', sans-serif;
     color: #0a173f;
     padding-left: 10px;
+}
+
+#profile-header {
+    text-align: center;
+    font-family: 'Assistant', sans-serif;
+}
+
+.profile-sec-header{
+    text-align: center;
+    font-family: 'Assistant', sans-serif;
+    background-color: #0a173f;
+    color: white;
+}
+
+.post-messages {
+    padding-left: 15px;
+}
+
+#message-from-user{
+    font-weight: 700;
+}
+
+#current-listings{
+    font-family: 'Assistant', sans-serif;
+}
+
+.login-label{
+    font-family: 'Assistant', sans-serif;
+    margin-right: 10px;
+}
+
+#search-form {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+#search-bar {
+    width: 60vw;
+    margin-right: 5px;
 }

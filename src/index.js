@@ -54,7 +54,7 @@ const Main = () => {
                     <UnauthPosts/>   
                 </Route>  
                 <Route path='/users/myprofile'>
-                    <Profile username = {username}/>
+                    <Profile username = {username} token={token}/>
                 </Route>
             </div>
           

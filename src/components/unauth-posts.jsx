@@ -18,7 +18,7 @@ const UnauthPosts = () => {
 
     return (
         <div className='posts-div'>
-            <h1> Current Listings</h1>
+            <h1 id='current-listings'> Current Listings</h1>
                 { posts.map(post => {
                     return( 
                     <div key={post._id} className='post'>

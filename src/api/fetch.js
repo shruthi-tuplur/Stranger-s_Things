@@ -129,5 +129,21 @@ export const registerUser = async (username, password) => {
         console.error(err);
       }
   }  
-  
+
+
+  export const GetMe = async (token) => {
+    try {
+        const response = await fetch(`${BASE_URL}/users/me`, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+        });
+        const result = await response.json();
+        console.log(result);
+        return result
+      } catch (err) {
+        console.error(err);
+      }
+  }
   

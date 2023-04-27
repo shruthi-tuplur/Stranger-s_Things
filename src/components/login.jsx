@@ -38,15 +38,15 @@ return (
     <div>
         
         <form className='register' onSubmit={handleSubmit}>
-            <h1 id='sign-in'>Sign In</h1>
+            <h1 id='sign-in'  className='login-label' >Sign In</h1>
             <div id='username' >
-                <label htmlFor='username'>Username: </label>
+                <label className='login-label' htmlFor='username'>Username: </label>
                 <input required type='text' name='username' onChange ={(event) => {
                     setUsername(event.target.value);
                     }}></input>
             </div>
             <div id='password'>
-                <label htmlFor='password'>Password: </label>
+                <label  className='login-label' htmlFor='password'>Password: </label>
                 <input required type='password' name='password' onChange ={(event) => {
                     setPassword(event.target.value);
                     }}></input>
