@@ -44,6 +44,8 @@ const Posts = ({username, isLoggedIn, token}) => {
         await deletePost(postID, token);
         await getPostData();
     }
+
+    
     
     return (
         <div>
@@ -55,6 +57,10 @@ const Posts = ({username, isLoggedIn, token}) => {
             <div id='logged-in-main'>
                 <div className='posts-div'>
                     { posts.map(post => {
+                        if(post.author.username == 'dannydevito'){
+                        console.log(post.author);
+                        console.log(username);
+                        console.log(post);}
                         return( 
                         <div key={post._id} className='post'>
                                 <p className='post-title'>{post.title.toUpperCase()}</p>
@@ -62,6 +68,12 @@ const Posts = ({username, isLoggedIn, token}) => {
                                 <p className='post-description'>{post.description}</p>
                                 <p className='post-price'>{post.price}</p>
                                 {username == post.author.username && <button id='post-delete-button' onClick={()=>{deleteMyPost(post._id, token)}}>Delete post</button>}
+                                {(username == post.author.username && post.messages.length > 0) && post.messages.map((message,idx ) => {
+                                    
+                                    return ( <div className='post-messages' key={message.fromUser._id}>
+                                        <p><strong id='message-from-user'>{message.fromUser.username}</strong>: {message.content}</p>
+                                       
+                                    </div>)}) }
                                 {username !==post.author.username && <Message postID={post._id} token = {token} viewMessage={viewMessage} username = {username} setViewMessage={setViewMessage} setMessageFrom={setMessageFrom}/>}
 
                             </div> )

@@ -28,7 +28,7 @@ body {
 
 #site-title {
     font-family: 'Sigmar', cursive;
-    color: white;
+    color: #FF9900;
     padding-left: 20px;
 }
 
@@ -64,6 +64,7 @@ body {
     padding-top: 15px;
     padding-bottom: 15px;
     margin-top: 0px;
+    
 }
 
 .post-author-name {
@@ -204,6 +205,10 @@ body {
     border-radius: 5px;
 }
 
+#post-delete-button:hover {
+    color: #FF9900;
+}
+
 .post-form {
     font-family: 'Assistant', sans-serif;
     
@@ -253,15 +258,19 @@ button {
 
 #profile-header {
     text-align: center;
-    font-family: 'Assistant', sans-serif;
+    font-family: 'Sigmar', cursive;
+    color: #0a173f;
 }
 
 .profile-sec-header{
     text-align: center;
     font-family: 'Assistant', sans-serif;
     background-color: #0a173f;
-    color: white;
+    color: #FF9900;
+    width: 50vw;
+    border-radius: 5px;
 }
+
 
 .post-messages {
     padding-left: 15px;
@@ -290,4 +299,37 @@ button {
 #search-bar {
     width: 60vw;
     margin-right: 5px;
+}
+
+.user-posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.outbox-div {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4px;
+    width: 50vw;
+}
+
+.outbox-post {
+    width: 50vw;
+    border: solid 1px #0a173f;
+    margin-bottom: 20px;
+
+    font-family: 'Assistant', sans-serif;
+    border-radius: 5px;
+}
+
+.outbox-message-content {
+    padding-left: 15px;
+}
+
+button:hover {
+    color: #FF9900;
 }

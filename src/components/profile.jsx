@@ -7,15 +7,16 @@ const Profile = (props) => {
     const [messages, setMessages] = useState([]);
     const [myMessages, setMyMessages] = useState([]);
 
-    const getPostData = async () => {
-        let postData = await GetMe(token);
-        setPosts(postData.data.posts);
-         
+    const getMyData = async () => {
+        let myData = await GetMe(token);
+        setPosts(myData.data.posts);
+        setMyMessages(myData.data.messages); 
+        console.log(myData.data.messages);
         
     }
 
     useEffect(() => {
-        getPostData();
+        getMyData();
         
     }, [] )
     
@@ -24,7 +25,7 @@ const Profile = (props) => {
         <div>
         <h1 id='profile-header'>{username}</h1>
         <div className='user-posts'>
-                <h2 className='profile-sec-header'>POSTS</h2>
+                <h2 className='profile-sec-header'>INBOX</h2>
                 <div className='posts-div'>
                     { posts && posts.filter(post => post.messages.length>0).map(post => {
                         return (
@@ -42,7 +43,20 @@ const Profile = (props) => {
                         )}
 
                 </div> 
+                <h2 className='profile-sec-header'>OUTBOX</h2>
+                <div className='outbox-div'>
+                    {myMessages.length > 0 && myMessages.filter(message => message.fromUser.username == username).map((message, idx) => {
+                        return (
+                            <div key = {message._id} className='outbox-post'>
+                                <p className='post-title'>Listing: {message.post.title.toUpperCase()}</p>
+                                <p className='outbox-message-content'><strong id='message-from-user'>{message.fromUser.username}: </strong>{message.content}</p>
+                            </div>
+                        )
+                    })}
+                </div>
+                
         </div>
+        
         </div>
     )
 }
