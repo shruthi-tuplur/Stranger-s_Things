@@ -2,6 +2,7 @@
 body {
     margin: 0px;
     height: 100vh;
+    background-color: #FF9900;
 }
 
 #app {
@@ -37,15 +38,17 @@ body {
     flex-direction: column;
     align-content: center;
     height: 80vh;
+    
 }
 
 .post {
-    border: solid 1px #0a173f;
+    
     margin: 10px;
     width: 50vw;
     font-family: 'Assistant', sans-serif;
     border-radius: 5px;
     color: #0a173f;
+    background-color: white;
 }
 
 .posts-div {
@@ -58,27 +61,28 @@ body {
 }
 
 .post-title {
-    padding-left: 5px;
+    padding-left: 15px;
     background-color: #0a173f;
     color: white;
     padding-top: 15px;
     padding-bottom: 15px;
     margin-top: 0px;
+    border-radius: 5px 5px 0px 0px;
     
 }
 
 .post-author-name {
     border-bottom: solid 1px #0a173f;
-    padding-left: 5px;
+    padding-left: 15px;
 }
 
 .post-description {
     border-bottom: solid 1px #0a173f;
-    padding-left: 5px;
+    padding-left: 15px;
 }
 
 .post-price {
-    padding-left: 5px;
+    padding-left: 15px;
 }
 
 .nav-bar {
@@ -143,7 +147,6 @@ body {
 #new-post-div {
     display: flex;
     flex-direction: column;
-    border: solid 1px #0a173f;
     width: 30vw;
     padding: 12px;
     padding-top: 0px;
@@ -211,7 +214,9 @@ body {
 
 .post-form {
     font-family: 'Assistant', sans-serif;
-    
+    background-color: white;
+    border: none;
+    border-radius: 5px;
 }
 
 button {
@@ -245,7 +250,7 @@ button {
     border-top: #0a173f solid 1px;
     padding-top: 15px;
     padding-bottom: 15px;
-    padding-left: 5px;
+    padding-left: 15px;
     
 }
 
@@ -258,16 +263,15 @@ button {
 
 #profile-header {
     text-align: center;
-    font-family: 'Sigmar', cursive;
+    font-family: 'Assistant', sans-serif;
     color: #0a173f;
 }
 
 .profile-sec-header{
     text-align: center;
     font-family: 'Assistant', sans-serif;
-    background-color: #0a173f;
-    color: #FF9900;
-    width: 50vw;
+    color: #0a173f;
+    
     border-radius: 5px;
 }
 
@@ -299,12 +303,15 @@ button {
 #search-bar {
     width: 60vw;
     margin-right: 5px;
+    border-radius: 5px;
+    border:none;
+    padding-left: 5px;
 }
 
 .user-posts {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .outbox-div {
@@ -313,8 +320,7 @@ button {
     align-content: center;
     justify-content: center;
     align-items: center;
-    margin-top: 4px;
-    width: 50vw;
+   
 }
 
 .outbox-post {
@@ -333,3 +339,44 @@ button {
 button:hover {
     color: #FF9900;
 }
+
+.message-input-field {
+    width: 500px;
+}
+
+.outbox-main-div {
+    width: 40vw;
+    background-color: #FF9900;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 5px;
+}
+
+.inbox-div {
+    width: 40vw;
+    background-color: #FF9900;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 5px;
+    
+}
+
+.inbox-post {
+    margin: 10px;
+    width: 40vw;
+    font-family: 'Assistant', sans-serif;
+    border-radius: 5px;
+    color: #0a173f;
+    background-color: white;
+}
+
+.outbox-post {
+    width: 40vw;
+    background-color: white;
+    border: none;
+}
+
+#posts-page{
+    background-color: #FF9900;
+}
+

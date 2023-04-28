@@ -23,36 +23,40 @@ const Profile = (props) => {
 
     return(
         <div>
-        <h1 id='profile-header'>{username}</h1>
+        <h1 id='profile-header'>User: {username}</h1>
         <div className='user-posts'>
-                <h2 className='profile-sec-header'>INBOX</h2>
-                <div className='posts-div'>
-                    { posts && posts.filter(post => post.messages.length>0).map(post => {
-                        return (
-                        <div key={post._id} className='post'>
-                                <p className='post-title'>{post.title.toUpperCase()}</p>
-                                {post.messages && post.messages.map((message, idx) => (
-                                    <div className='post-messages' key={message.fromUser._id}>
-                                        <p><strong id='message-from-user'>{message.fromUser.username}</strong>: {message.content}</p>
-                                       
-                                    </div>
-                    ))}
-                            </div> )} 
+                <div className='inbox-div'>
+                    <h2 className='profile-sec-header'>INBOX</h2>
+                    <div className='posts-div'>
+                        { posts && posts.filter(post => post.messages.length>0).map(post => {
+                            return (
+                            <div key={post._id} className='inbox-post'>
+                                    <p className='post-title'>{post.title.toUpperCase()}</p>
+                                    {post.messages && post.messages.map((message, idx) => (
+                                        <div className='post-messages' key={message.fromUser._id}>
+                                            <p><strong id='message-from-user'>{message.fromUser.username}</strong>: {message.content}</p>
+                                        
+                                        </div>
+                        ))}
+                                </div> )} 
 
-                            
-                        )}
+                                
+                            )}
 
-                </div> 
-                <h2 className='profile-sec-header'>OUTBOX</h2>
-                <div className='outbox-div'>
-                    {myMessages.length > 0 && myMessages.filter(message => message.fromUser.username == username).map((message, idx) => {
-                        return (
-                            <div key = {message._id} className='outbox-post'>
-                                <p className='post-title'>Listing: {message.post.title.toUpperCase()}</p>
-                                <p className='outbox-message-content'><strong id='message-from-user'>{message.fromUser.username}: </strong>{message.content}</p>
-                            </div>
-                        )
-                    })}
+                    </div> 
+                </div>
+                <div className='outbox-main-div'>
+                    <h2 className='profile-sec-header'>OUTBOX</h2>
+                    <div className='outbox-div'>
+                        {myMessages.length > 0 && myMessages.filter(message => message.fromUser.username == username).map((message, idx) => {
+                            return (
+                                <div key = {message._id} className='outbox-post'>
+                                    <p className='post-title'>Listing: {message.post.title.toUpperCase()}</p>
+                                    <p className='outbox-message-content'><strong id='message-from-user'>{message.fromUser.username}: </strong>{message.content}</p>
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
                 
         </div>

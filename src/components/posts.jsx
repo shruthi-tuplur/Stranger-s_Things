@@ -15,6 +15,8 @@ const Posts = ({username, isLoggedIn, token}) => {
     const [location, setLocation] = useState('');
     const [viewMessage, setViewMessage] = useState('');
     const [messageFrom, setMessageFrom] = useState('');
+    const [searchValue, setSearchValue] = useState('');
+    const [filterString, setFilterString] = useState('');
 
     const history= useHistory();
 
@@ -45,13 +47,52 @@ const Posts = ({username, isLoggedIn, token}) => {
         await getPostData();
     }
 
-    
+ 
+
+    const handleSearchSubmit = (event) => {
+        event.preventDefault();
+        setFilterString(searchValue);
+        setSearchValue('');
+
+        
+    }
+
+    if(filterString){
+        return (
+            <div className='posts-div' id='posts-page'>
+                    { posts.filter(post => post.title.toLowerCase().includes(filterString.toLowerCase().trim()) || post.description.toLowerCase().includes(filterString.toLowerCase().trim())).map(post => {
+                        if(post.author.username == 'dannydevito'){
+                        console.log(post.author);
+                        console.log(username);
+                        console.log(post);}
+                        return( 
+                        <div key={post._id} className='post'>
+                                <p className='post-title'>{post.title.toUpperCase()}</p>
+                                <p className='post-author-name'>{post.author.username} - Location: {post.location}</p>
+                                <p className='post-description'>{post.description}</p>
+                                <p className='post-price'>{post.price}</p>
+                                {username == post.author.username && <button id='post-delete-button' onClick={()=>{deleteMyPost(post._id, token)}}>Delete post</button>}
+                                {(username == post.author.username && post.messages.length > 0) && post.messages.map((message,idx ) => {
+                                    
+                                    return ( <div className='post-messages' key={message.fromUser._id}>
+                                        <p><strong id='message-from-user'>{message.fromUser.username}</strong>: {message.content}</p>
+                                       
+                                    </div>)}) }
+                                {username !==post.author.username && <Message postID={post._id} token = {token} viewMessage={viewMessage} username = {username} setViewMessage={setViewMessage} setMessageFrom={setMessageFrom}/>}
+
+                            </div> )
+                        })}
+                    <button onClick={()=>{setFilterString('')}}>Clear filters</button>    
+
+                </div> 
+        )
+    } else {
     
     return (
-        <div>
-            <form id='search-form'>
+        <div id='posts-page'>
+            <form id='search-form' onSubmit={handleSearchSubmit}>
                 
-                <input type='text' name='search' id='search-bar' placeholder='search for items'></input>
+                <input type='text' name='search' id='search-bar' placeholder='search for items' onChange={(e)=>{setSearchValue(e.target.value)}}></input>
                 <button type='submit'>Search</button>
             </form> 
             <div id='logged-in-main'>
@@ -63,10 +104,10 @@ const Posts = ({username, isLoggedIn, token}) => {
                         console.log(post);}
                         return( 
                         <div key={post._id} className='post'>
-                                <p className='post-title'>{post.title.toUpperCase()}</p>
-                                <p className='post-author-name'>{post.author.username} - Location: {post.location}</p>
-                                <p className='post-description'>{post.description}</p>
-                                <p className='post-price'>{post.price}</p>
+                                <p className='post-title'> {post.title.toUpperCase()}</p>
+                                <p className='post-author-name'><strong>Post author: </strong> {post.author.username} - Location: {post.location}</p>
+                                <p className='post-description'><strong>Description: </strong> {post.description}</p>
+                                <p className='post-price'><strong>Price: </strong> {post.price}</p>
                                 {username == post.author.username && <button id='post-delete-button' onClick={()=>{deleteMyPost(post._id, token)}}>Delete post</button>}
                                 {(username == post.author.username && post.messages.length > 0) && post.messages.map((message,idx ) => {
                                     
@@ -109,6 +150,7 @@ const Posts = ({username, isLoggedIn, token}) => {
         </div>
        </div>
     )
+}
 
 }
 
