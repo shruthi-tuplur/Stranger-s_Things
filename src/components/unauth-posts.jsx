@@ -1,3 +1,6 @@
+
+// this component loads posts on "homepage" that we can see before we're logged in; this will give us a view of the listings without the post interaction features only available to authenticated users
+
 import { fetchPosts } from "../api/fetch";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -7,14 +10,20 @@ const UnauthPosts = () => {
     const [posts, setPosts] = useState([]);
 
     const getPostData = async () => {
+
+        // fetches posts from API
         let postData = await fetchPosts();  
         setPosts(postData.data.posts)
     }
 
     useEffect(() => {
+
+        // loads posts immediately when the page loads
         getPostData();
         
     }, [] )
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     return (
         <div className='posts-div'>
@@ -37,4 +46,4 @@ const UnauthPosts = () => {
 
 }
 
-export default UnauthPosts
+export default UnauthPosts;

@@ -1,8 +1,13 @@
+
+// this component renders messages we've sent onto our profile
+
 import React from 'react';
 
 const ProfileOutbox = (props) => {
 
     const {myMessages, username} = props; 
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     return (<div className='outbox-main-div'>
                     <h2 className='profile-sec-header'>OUTBOX</h2>

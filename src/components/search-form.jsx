@@ -1,8 +1,13 @@
-import React, {useEffect, useState} from 'react'
+
+// this component renders the search bar at the top of the posts page so that we can apply a keyword search to the posts 
+
+import React from 'react'
 
 const SearchForm = (props) => {
 
     const {handleSearchSubmit, setSearchValue} = props;
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     return (
         <form id='search-form' onSubmit={handleSearchSubmit}>

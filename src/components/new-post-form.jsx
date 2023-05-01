@@ -1,10 +1,16 @@
+
+// this component renders our new post form
+
 import React from "react";
 
 const NewPostForm = (props) => {
 
     const {title, setTitle, description, setDescription, price, setPrice, location, setLocation, setWillDeliver, handleSubmit} = props;
-return (
-    <form className='post-form' onSubmit={handleSubmit}>
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    
+
+    return (
+        <form className='post-form' onSubmit={handleSubmit}>
                         <div id='new-post-div'>
                             <h3>Create a listing</h3>
                             <label  className='new-post-label' htmlFor='new-post-title'>Title: </label>

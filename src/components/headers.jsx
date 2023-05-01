@@ -1,3 +1,6 @@
+
+// this component handles our headers throughout the app 
+
 import React from 'react';
 import {Link, useHistory} from 'react-router-dom';
 
@@ -8,7 +11,11 @@ let currentHeader;
 
 const history = useHistory();
 
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 if (token && isLoggedIn){
+
+    // header for if we're logged in
     currentHeader = (
     <div id='site-header'>
     <h1 id='site-title'>stranger's things</h1>   
@@ -30,6 +37,8 @@ if (token && isLoggedIn){
     </div>
     </div> )
 } else {
+
+    // header for if we're not logged in
     currentHeader = (
     <div id='site-header'>
         <h1 id='site-title'>stranger's things</h1>    
@@ -39,6 +48,8 @@ if (token && isLoggedIn){
         </div>
     </div>)
 }
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 return (
     <div>

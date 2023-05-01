@@ -1,14 +1,19 @@
+
+// renders posts when we do have a search filter applied
+
 import Message from './message-form';
 import React, {useEffect, useState} from 'react'
 import { fetchPosts, makePost, deletePost } from '../api/fetch';
 
 const FilteredPosts = (props) => {
 
-    const {posts, filterString, setFilterString, deleteMyPost} = props;
+    const {posts, filterString, setFilterString, deleteMyPost, username} = props;
 
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
     return (<div className='posts-div' id='posts-page'>
                     { posts.filter(post => post.title.toLowerCase().includes(filterString.toLowerCase().trim()) || post.description.toLowerCase().includes(filterString.toLowerCase().trim())).map(post => {
-                        if(post.author.username == 'dannydevito'){
+                        if(post.author.username == username){
                         console.log(post.author);
                         console.log(username);
                         console.log(post);}

@@ -1,10 +1,14 @@
-import React, {useEffect, useState} from 'react'
-import { fetchPosts, makePost, deletePost } from '../api/fetch';
-import Message from './message-form';
+
+// this component renders posts when we do not have a keyword search filter applied 
+
+import React from 'react'
+import Message from './message-form'; // this component allows users to send messages on posts that are not their own posts
 
 const UnfilteredPosts = (props) => {
 
     const {posts, deleteMyPost, token, viewMessage, setViewMessage, username, setMessageFrom} = props;
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    
 
    return ( <div className='posts-div'>
             { posts.map(post => {

@@ -1,15 +1,19 @@
+
+// this is our main parent component that handles rendering our profile page
+
 import React, {useEffect, useState} from 'react';
-import { GetMe,fetchPosts } from '../api/fetch';
-import ProfileInbox from './profile-inbox';
-import ProfileOutbox from './profile-outbox';
+import { GetMe } from '../api/fetch';
+import ProfileInbox from './profile-inbox'; // renders messages received from other users
+import ProfileOutbox from './profile-outbox'; // renders messages sent to other users
 
 const Profile = (props) => {
     const {username, token} = props;
     const [posts, setPosts] = useState([]);
-    const [messages, setMessages] = useState([]);
     const [myMessages, setMyMessages] = useState([]);
 
     const getMyData = async () => {
+
+        // gets user object from API 
         let myData = await GetMe(token);
         setPosts(myData.data.posts);
         setMyMessages(myData.data.messages); 
@@ -22,6 +26,7 @@ const Profile = (props) => {
         
     }, [] )
     
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     return(
         <div>
@@ -36,4 +41,3 @@ const Profile = (props) => {
 
 export default Profile;
 
-//.filter(post=>post.active)

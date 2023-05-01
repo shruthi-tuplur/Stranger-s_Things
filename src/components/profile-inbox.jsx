@@ -1,8 +1,13 @@
-import React, {useEffect, useState} from 'react';
+
+// this component renders messages that we've received onto our profile page
+
+import React from 'react';
 
 const ProfileInbox = (props) => {
 
     const {posts} = props;
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    
 
     return (<div className='inbox-div'>
                     <h2 className='profile-sec-header'>INBOX</h2>

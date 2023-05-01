@@ -1,45 +1,32 @@
 
+/* STYLING BY ELEMENT TAG */
+
 body {
     margin: 0px;
     height: 100vh;
     background-color: #FF9900;
 }
 
-#app {
-    height: 100vh;
-}
 
-#body-div {
-    height: 100vh;
-}
-
-#site-header {
+button {
+    font-family: 'Assistant', sans-serif;
     background-color: #0a173f;
-    margin-top: 0px;
-    padding-top: 0px;
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-between;
-    padding-left: 30px;
     color: white;
-    margin-left: 0px;
+    border: none;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-left: 2px;
 }
 
-#site-title {
-    font-family: 'Sigmar', cursive;
+button:hover {
     color: #FF9900;
-    padding-left: 20px;
 }
 
-#mainsite-body {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    height: 80vh;
-    
-}
+/*-------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* STYLING BY CLASS */
+
 
 .post {
     
@@ -100,6 +87,153 @@ body {
     padding-top: 200px;
 }
 
+.new-post-label {
+    padding-top: 15px;
+}
+
+.unauth-login {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+    align-items: center;
+    text-decoration: none;
+    font-family: 'Assistant', sans-serif;
+    margin-top: 20px;
+}
+
+.post-form {
+    font-family: 'Assistant', sans-serif;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+
+.profile-sec-header{
+    text-align: center;
+    font-family: 'Assistant', sans-serif;
+    color: #0a173f;
+    
+    border-radius: 5px;
+}
+
+
+.post-messages {
+    padding-left: 15px;
+}
+
+
+.login-label{
+    font-family: 'Assistant', sans-serif;
+    margin-right: 10px;
+}
+
+
+.user-posts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.outbox-div {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.outbox-post {
+    width: 50vw;
+    border: solid 1px #0a173f;
+    margin-bottom: 20px;
+
+    font-family: 'Assistant', sans-serif;
+    border-radius: 5px;
+}
+
+.outbox-message-content {
+    padding-left: 15px;
+}
+
+
+.message-input-field {
+    width: 500px;
+}
+
+.outbox-main-div {
+    width: 40vw;
+    background-color: #FF9900;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 5px;
+}
+
+.inbox-div {
+    width: 40vw;
+    background-color: #FF9900;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 5px;
+    
+}
+
+.inbox-post {
+    margin: 10px;
+    width: 40vw;
+    font-family: 'Assistant', sans-serif;
+    border-radius: 5px;
+    color: #0a173f;
+    background-color: white;
+}
+
+.outbox-post {
+    width: 40vw;
+    background-color: white;
+    border: none;
+}
+
+/*-------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* STYLING BY ID */
+
+#app {
+    height: 100vh;
+}
+
+#body-div {
+    height: 100vh;
+}
+
+#site-header {
+    background-color: #0a173f;
+    margin-top: 0px;
+    padding-top: 0px;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    padding-left: 30px;
+    color: white;
+    margin-left: 0px;
+}
+
+#site-title {
+    font-family: 'Sigmar', cursive;
+    color: #FF9900;
+    padding-left: 20px;
+}
+
+#mainsite-body {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    height: 80vh;
+    
+}
+
 #username {
     display: flex;
     justify-content: center;
@@ -155,9 +289,6 @@ body {
     border-radius: 5px;
 }
 
-.new-post-label {
-    padding-top: 15px;
-}
 
 #new-post-desc {
     height: 50px;
@@ -184,16 +315,6 @@ body {
 }
 
 
-.unauth-login {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 30px;
-    align-items: center;
-    text-decoration: none;
-    font-family: 'Assistant', sans-serif;
-    margin-top: 20px;
-}
-
 #sign-in {
     text-align: center;
 }
@@ -212,23 +333,7 @@ body {
     color: #FF9900;
 }
 
-.post-form {
-    font-family: 'Assistant', sans-serif;
-    background-color: white;
-    border: none;
-    border-radius: 5px;
-}
 
-button {
-    font-family: 'Assistant', sans-serif;
-    background-color: #0a173f;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    margin-left: 2px;
-}
 
 #profile-button {
     background-color:  #0a173f;
@@ -267,18 +372,6 @@ button {
     color: #0a173f;
 }
 
-.profile-sec-header{
-    text-align: center;
-    font-family: 'Assistant', sans-serif;
-    color: #0a173f;
-    
-    border-radius: 5px;
-}
-
-
-.post-messages {
-    padding-left: 15px;
-}
 
 #message-from-user{
     font-weight: 700;
@@ -288,10 +381,6 @@ button {
     font-family: 'Assistant', sans-serif;
 }
 
-.login-label{
-    font-family: 'Assistant', sans-serif;
-    margin-right: 10px;
-}
 
 #search-form {
     margin-top: 15px;
@@ -308,73 +397,6 @@ button {
     padding-left: 5px;
 }
 
-.user-posts {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.outbox-div {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-   
-}
-
-.outbox-post {
-    width: 50vw;
-    border: solid 1px #0a173f;
-    margin-bottom: 20px;
-
-    font-family: 'Assistant', sans-serif;
-    border-radius: 5px;
-}
-
-.outbox-message-content {
-    padding-left: 15px;
-}
-
-button:hover {
-    color: #FF9900;
-}
-
-.message-input-field {
-    width: 500px;
-}
-
-.outbox-main-div {
-    width: 40vw;
-    background-color: #FF9900;
-    padding-right: 20px;
-    padding-left: 20px;
-    border-radius: 5px;
-}
-
-.inbox-div {
-    width: 40vw;
-    background-color: #FF9900;
-    padding-right: 20px;
-    padding-left: 20px;
-    border-radius: 5px;
-    
-}
-
-.inbox-post {
-    margin: 10px;
-    width: 40vw;
-    font-family: 'Assistant', sans-serif;
-    border-radius: 5px;
-    color: #0a173f;
-    background-color: white;
-}
-
-.outbox-post {
-    width: 40vw;
-    background-color: white;
-    border: none;
-}
 
 #posts-page{
     background-color: #FF9900;

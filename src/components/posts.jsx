@@ -1,11 +1,15 @@
+
+// this is the main component for handling posts, including the search form, the new post form, and both filtered and unfiltered posts
+
 import React, {useEffect, useState} from 'react'
 import { fetchPosts, makePost, deletePost } from '../api/fetch';
-import FilteredPosts from './filtered-posts';
-import UnfilteredPosts from './unfiltered-posts';
-import NewPostForm from './new-post-form';
-import SearchForm from './search-form';
+import FilteredPosts from './filtered-posts'; // renders posts when a search filter is applied
+import UnfilteredPosts from './unfiltered-posts'; // renders posts when a search filter is not applied
+import NewPostForm from './new-post-form'; // form to create new posts
+import SearchForm from './search-form'; // form to enter search string
 
-const Posts = ({username, isLoggedIn, token}) => {
+
+const Posts = ({username, token}) => {
 
     
     const [posts, setPosts] = useState([]);
@@ -26,13 +30,15 @@ const Posts = ({username, isLoggedIn, token}) => {
     }
 
     useEffect(() => {
+
+        // renders posts immediately after page is loaded
         getPostData();
         
     }, [] )
    
     const handleSubmit = async() => {
         event.preventDefault()
-        await makePost(title, description, price, willDeliver, location, token);
+        await makePost(title, description, price, willDeliver, location, token); // API call to create a new post
         await getPostData();
         setTitle('');
         setDescription('');
@@ -53,13 +59,13 @@ const Posts = ({username, isLoggedIn, token}) => {
         event.preventDefault();
         setFilterString(searchValue);
         setSearchValue('');
-
-        
     }
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     if(filterString){
         return (
-             <FilteredPosts posts = {posts} filterString = {filterString} setFilterString = {setFilterString} deleteMyPost = {deleteMyPost} />
+             <FilteredPosts username = {username} posts = {posts} filterString = {filterString} setFilterString = {setFilterString} deleteMyPost = {deleteMyPost} />
         )
     } else {
     

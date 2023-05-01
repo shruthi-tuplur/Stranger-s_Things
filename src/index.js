@@ -10,16 +10,15 @@ import Profile from './components/profile'
 
 const Main = () => {
     const [token, setToken] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false); //determines whether or not we are both logged in and have a token because we have a token if we've registered even if we haven't logged in yet
     const [username, setUsername] = useState('');
-    let history = useHistory();
 
     useEffect(() => {
         if(!token){
             setToken(localStorage.getItem('token'))
         }
         
-    }, [token])    
+    }, [token])     
 
     useEffect(() => {
         if(!isLoggedIn){
@@ -42,7 +41,7 @@ const Main = () => {
             <div id = 'mainsite-body'>
 
                 <Route path = '/users/register'>
-                    <Register token = {token} setToken = {setToken} />
+                    <Register token = {token} setToken = {setToken} /> 
                 </Route>
                 <Route path = '/users/login'>
                     <LogIn token = {token} setToken = {setToken} setIsLoggedIn = {setIsLoggedIn} username = {username} setUsername = {setUsername}/>
