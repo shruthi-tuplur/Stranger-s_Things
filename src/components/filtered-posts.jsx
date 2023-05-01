@@ -7,16 +7,13 @@ import { fetchPosts, makePost, deletePost } from '../api/fetch';
 
 const FilteredPosts = (props) => {
 
-    const {posts, filterString, setFilterString, deleteMyPost, username} = props;
-
+    const {posts, filterString, setFilterString, deleteMyPost, username, token, viewMessage, setViewMessage, setMessageFrom} = props;
+   
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     return (<div className='posts-div' id='posts-page'>
                     { posts.filter(post => post.title.toLowerCase().includes(filterString.toLowerCase().trim()) || post.description.toLowerCase().includes(filterString.toLowerCase().trim())).map(post => {
-                        if(post.author.username == username){
-                        console.log(post.author);
-                        console.log(username);
-                        console.log(post);}
+                        
                         return( 
                         <div key={post._id} className='post'>
                                 <p className='post-title'>{post.title.toUpperCase()}</p>
@@ -30,7 +27,7 @@ const FilteredPosts = (props) => {
                                         <p><strong id='message-from-user'>{message.fromUser.username}</strong>: {message.content}</p>
                                        
                                     </div>)}) }
-                                {username !==post.author.username && <Message postID={post._id} token = {token} viewMessage={viewMessage} username = {username} setViewMessage={setViewMessage} setMessageFrom={setMessageFrom}/>}
+                                {(token && (username !== post.author.username)) && <Message postID={post._id} token = {token} viewMessage={viewMessage} username = {username} setViewMessage={setViewMessage} setMessageFrom={setMessageFrom}/>}
 
                             </div> )
                         })}

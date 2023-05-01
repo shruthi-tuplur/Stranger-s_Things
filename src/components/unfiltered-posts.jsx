@@ -12,10 +12,7 @@ const UnfilteredPosts = (props) => {
 
    return ( <div className='posts-div'>
             { posts.map(post => {
-                        if(post.author.username == 'dannydevito'){
-                        console.log(post.author);
-                        console.log(username);
-                        console.log(post);}
+                        
                         return( 
                         <div key={post._id} className='post'>
                                 <p className='post-title'> {post.title.toUpperCase()}</p>

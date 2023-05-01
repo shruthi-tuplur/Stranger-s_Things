@@ -3,11 +3,20 @@
 
 import { fetchPosts } from "../api/fetch";
 import { useEffect, useState } from "react";
+import SearchForm from './search-form';
+import FilteredPosts from "./filtered-posts";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+
 
 const UnauthPosts = () => {
 
     const [posts, setPosts] = useState([]);
+    const [searchValue, setSearchValue] = useState('');
+    const [filterString, setFilterString] = useState('');
+
+    const username = '';
+    const deleteMyPost = '';
+    const token = '';
 
     const getPostData = async () => {
 
@@ -23,10 +32,22 @@ const UnauthPosts = () => {
         
     }, [] )
 
-//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    const handleSearchSubmit = (event) => {
+        event.preventDefault();
+        setFilterString(searchValue);
+        getPostData();
+        setSearchValue('');
+    }
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+if(filterString){
+    return (
+         <FilteredPosts token = {token} username = {username} posts = {posts} filterString = {filterString} setFilterString = {setFilterString} deleteMyPost = {deleteMyPost} />
+    )
+} else {
     return (
         <div className='posts-div'>
+            <SearchForm handleSearchSubmit={handleSearchSubmit} setSearchValue={setSearchValue} setFilterString={setFilterString}/>
             <h1 id='current-listings'> Current Listings</h1>
                 { posts.map(post => {
                     return( 
@@ -44,6 +65,7 @@ const UnauthPosts = () => {
             </div> 
     )
 
+}
 }
 
 export default UnauthPosts;

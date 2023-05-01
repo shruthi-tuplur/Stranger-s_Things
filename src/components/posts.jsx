@@ -65,13 +65,13 @@ const Posts = ({username, token}) => {
 
     if(filterString){
         return (
-             <FilteredPosts username = {username} posts = {posts} filterString = {filterString} setFilterString = {setFilterString} deleteMyPost = {deleteMyPost} />
+             <FilteredPosts token = {token} username = {username} posts = {posts} filterString = {filterString} setFilterString = {setFilterString} deleteMyPost = {deleteMyPost} setMessageFrom = {setMessageFrom} setViewMessage = {setViewMessage} viewMessage={viewMessage}/>
         )
     } else {
     
     return (
         <div id='posts-page'>
-            <SearchForm handleSearchSubmit={handleSearchSubmit} setSearchValue={setSearchValue} />
+            <SearchForm handleSearchSubmit={handleSearchSubmit} setSearchValue={setSearchValue} setFilterString={setFilterString}/>
             <div id='logged-in-main'>
                 <UnfilteredPosts posts = {posts} deleteMyPost={deleteMyPost} token = {token} viewMessage = {viewMessage} setViewMessage = {setViewMessage} username = {username} setMessageFrom = {setMessageFrom} />
                 <aside>
